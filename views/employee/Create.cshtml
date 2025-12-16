@@ -1,0 +1,34 @@
+﻿@using payroll.model
+@model payroll.model.Employee
+@{
+    Layout="_Layout";
+}
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label>Full Name</label>
+        <input name="EmployeeName" class="form-control" value="@Model?.EmployeeName" />
+    </div>
+
+    <div class="mb-3">
+        <label>Birth Date</label>
+        <input name="BirthDate" type="date" class="form-control" value="@Model?.BirthDate.ToString("yyyy-MM-dd")" />
+    </div>
+
+    <div class="mb-3">
+        <label>Daily Rate</label>
+        <input name="DailyRate" type="number" step="0.01" class="form-control" value="@Model?.DailyRate" />
+    </div>
+
+    <div class="mb-3">
+        <label>Work Schedule</label>
+        <select name="WorkSchedule" class="form-select">
+            <option value="1">MWF</option>
+            <option value="2">TTHS</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
